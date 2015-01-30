@@ -1,6 +1,19 @@
+import javax.swing.JPanel;
+import java.lang.Math;
 public class Polygon {
 
-	public Polygon() {
+	private int numSides;
+	private int radius; //double?
+	private double centralAngle;
+	private int sideLength;
+	
+	
+	public Polygon(int numSides, int sideLength, JPanel p) {
+		this.numSides = numSides;
+		this.sideLength = sideLength;
+		this.centralAngle = (double)360/numSides; //degrees for now
+		this.radius=(int)Math.abs(sideLength/(2*Math.sin(180/numSides)));
+		
 	}
 
 	public static void main(String[] args) {
@@ -8,3 +21,4 @@ public class Polygon {
 	}
 
 }
+
