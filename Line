@@ -1,4 +1,4 @@
-	import javax.swing.JPanel;
+		import javax.swing.JPanel;
 	import java.lang.Math;
 	import java.util.ArrayList;
 
@@ -14,10 +14,10 @@
 		private double [][] points = new double [2][2];
 		
 		
-		public Line1(double drawAngle) {
+		public Line1(double drawAngle, double [][] points) {
 //			this.length = length;
-			this.drawAngle = drawAngle; //degrees for now
-			
+			this.drawAngle = drawAngle; 
+			this.points = points;
 		}
 		
 		public String toString(){
@@ -120,15 +120,15 @@
 		}
 		
 		public static void main(String[] args) {
-			Line1 a = new Line1(0);
-			Line1 b = new Line1(2);
+//			Line1 a = new Line1(0);
+//			Line1 b = new Line1(2);
 			
-			System.out.println(a.toString());
-			System.out.println(b.toString());
-			
-			b.rotateOnce(1);
-			
-			System.out.println(b.toString());
+//			System.out.println(a.toString());
+//			System.out.println(b.toString());
+//			
+//			b.rotateOnce(1);
+//			
+//			System.out.println(b.toString());
 
 
 		}
