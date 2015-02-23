@@ -11,6 +11,7 @@
 		private double drawAngle;
 //		private double length;
 		private double PI = Math.PI;
+		private double [][] points = new double [2][2];
 		
 		
 		public Line1(double drawAngle) {
@@ -20,8 +21,7 @@
 		}
 		
 		public String toString(){
-			String s=("Line with length "+
-		getLength()+ " drawn at an angle of "+ getDrawAngle());
+			String s=("Line drawn at an angle of "+ getDrawAngle());
 			return s;
 		}
 		
@@ -66,7 +66,7 @@
 		
 		//method to return a 2D double array of points 
 		//public 
-		public double[][] getPoints(double width, double height){ //double or int?? //this only works for line for now lol
+		public void getPoints(double width, double height){ //double or int?? //this only works for line for now lol
 			double[][] points = new double[2][2];
 			double screenAngle = Math.atan(height/width);
 //			this.setLength(height/Math.sin(screenAngle));//this?
@@ -109,7 +109,7 @@
 				points[1][1] = 0; //y2
 	 		}
 			
-	 		return points;
+	 		this.points = points;
 			//receive frame in constructor or receive dimensions of area painted on
 			
 		}
@@ -120,8 +120,8 @@
 		}
 		
 		public static void main(String[] args) {
-			Line1 a = new Line1(5,0);
-			Line1 b = new Line1(10, 2);
+			Line1 a = new Line1(0);
+			Line1 b = new Line1(2);
 			
 			System.out.println(a.toString());
 			System.out.println(b.toString());
