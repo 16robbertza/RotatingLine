@@ -11,17 +11,17 @@ public class LineComponent extends JComponent {
 	private JFrame frame;
 	private Line2D.Double line;
 	double[][] points = new double[2][2];
-	double elapsedTime;
+	double theta;
 	private int startStop;
 
 	private ActionListener rotation = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			// System.out.println(lineToString(line));
 
-			elapsedTime += 1.5;
+			theta += .1;
 
 			// points = rotate(points);
-			points = rotate(points, elapsedTime, frame);
+			points = rotate(points, theta, frame);
 			line.setLine(points[0][0], points[0][1], points[1][0], points[1][1]);
 
 			LineComponent.this.repaint();
@@ -34,7 +34,7 @@ public class LineComponent extends JComponent {
 		super();
 		
 		this.frame = frame;
-		this.elapsedTime = 0;
+		this.theta = 0;
 		this.startStop = 0;
 
 		points[0][0] = 0;
@@ -62,9 +62,9 @@ public class LineComponent extends JComponent {
 		return points;
 	}
 
-	public static double[][] rotate(double[][] points, double timeElapsed,
+	public static double[][] rotate(double[][] points, double theta,
 			JFrame frame) {
-		double theta = timeElapsed / 57.3;
+		//double theta = timeElapsed / 57.3;
 		// System.out.println("Theta" + theta);
 		double r = 0;
 		double a = frame.getWidth();
@@ -80,9 +80,9 @@ public class LineComponent extends JComponent {
 		// System.out.println("Radius" + r);
 
 		points[0][0] = r * Math.cos(theta) + frame.getWidth() / 2;
-		points[0][1] = r * Math.sin(theta) + frame.getContentPane().getHeight() / 2 - 15;
+		points[0][1] = r * Math.sin(theta) + frame.getContentPane().getHeight() / 2 - 25;
 		points[1][0] = r * Math.cos(theta + Math.PI) + frame.getWidth() / 2;
-		points[1][1] = r * Math.sin(theta + Math.PI)  + frame.getContentPane().getHeight() / 2 - 15;
+		points[1][1] = r * Math.sin(theta + Math.PI)  + frame.getContentPane().getHeight() / 2 - 25;
 
 		return points;
 	}
