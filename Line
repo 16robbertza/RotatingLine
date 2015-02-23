@@ -1,4 +1,4 @@
-		import javax.swing.JPanel;
+	import javax.swing.JPanel;
 	import java.lang.Math;
 	import java.util.ArrayList;
 
@@ -66,7 +66,7 @@
 		
 		//method to return a 2D double array of points 
 		//public 
-		public void getPoints(double width, double height){ //double or int?? //this only works for line for now lol
+		public double[][] getPoints(double width, double height){ //double or int?? //this only works for line for now lol
 			double[][] points = new double[2][2];
 			double screenAngle = Math.atan(height/width);
 //			this.setLength(height/Math.sin(screenAngle));//this?
@@ -110,6 +110,7 @@
 	 		}
 			
 	 		this.points = points;
+	 		return points;
 			//receive frame in constructor or receive dimensions of area painted on
 			
 		}
