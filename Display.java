@@ -1,17 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Line2D;
 import javax.swing.*;
 
-/*
- * So, I got the line to rotate and stuff, but I haven't done any extra stuff. 
- * I don't think well really have time. 
- * You can just take the rotate() method if you want, but I can change my stuff too if you've done it a better way. 
- * All I would have to do is just change the parameters. 
- * 
- * Best of luck, 
- * Andrew
- */
 public class Display extends JFrame {
 
 	private JFrame frame = new JFrame("Rotating Lines");

@@ -9,21 +9,17 @@ import javax.swing.Timer;
 public class LineComponent extends JComponent {
 
 	private JFrame frame;
-	private Line2D.Double line;
 	double[][] points = new double[2][2];
-	double theta;
 	private int startStop;
+	private Line1 ln;
 
 	private ActionListener rotation = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			// System.out.println(lineToString(line));
+			//System.out.println(lineToString(line));
 
-			theta += .1;
-
-			// points = rotate(points);
-			points = rotate(points, theta, frame);
-			line.setLine(points[0][0], points[0][1], points[1][0], points[1][1]);
-
+			ln.rotateOnce(1);
+			points = ln.getPoints(frame.getContentPane().getWidth(), frame.getContentPane().getHeight() - 50);
+			
 			LineComponent.this.repaint();
 		}
 	};
@@ -34,36 +30,25 @@ public class LineComponent extends JComponent {
 		super();
 		
 		this.frame = frame;
-		this.theta = 0;
 		this.startStop = 0;
 
 		points[0][0] = 0;
 		points[0][1] = 0;
 		points[1][0] = 0;
 		points[1][1] = 0;
-
-		line = new Line2D.Double(points[0][0], points[0][1], points[1][0],
-				points[1][1]);
-
+			
+		ln = new Line1(0, points);
+		
 	}
 
 	public void paintComponent(Graphics g) {
+		Line2D.Double line = new Line2D.Double(points[0][0], points[0][1], points[1][0], points[1][1]);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(Color.black);
 		g2.draw(line);
 	}
 
-	public static double[][] rotate(double[][] points) {
-		points[0][0] = 0;
-		points[0][1] = 0;
-		points[1][0] += 20;
-		points[1][1] += 20;
-
-		return points;
-	}
-
-	public static double[][] rotate(double[][] points, double theta,
-			JFrame frame) {
+	public static double[][] rotate(double[][] points, double theta, JFrame frame) {
 		//double theta = timeElapsed / 57.3;
 		// System.out.println("Theta" + theta);
 		double r = 0;
