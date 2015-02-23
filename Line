@@ -115,7 +115,10 @@
 			
 		}
 		
-		public static void rotate(int direction){
+		public void rotate(Line1 line, int direction, double width, double height){
+			
+			line.rotateOnce(direction);
+			line.getPoints(width, height);
 			//errr not sure what to do here
 			//need to rotate continuously somehow and return the array of points each rotation
 		}
