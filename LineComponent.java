@@ -48,29 +48,6 @@ public class LineComponent extends JComponent {
 		g2.draw(line);
 	}
 
-	public static double[][] rotate(double[][] points, double theta, JFrame frame) {
-		//double theta = timeElapsed / 57.3;
-		// System.out.println("Theta" + theta);
-		double r = 0;
-		double a = frame.getWidth();
-		// System.out.println("Width" + a);
-		double b = frame.getHeight();
-		// System.out.println("Height" + b);
-		if (a >= b) {
-			r = frame.getWidth() / Math.sqrt(2) + 1;
-		}
-		if (a < b) {
-			r = frame.getHeight() / Math.sqrt(2) + 1;
-		}
-		// System.out.println("Radius" + r);
-
-		points[0][0] = r * Math.cos(theta) + frame.getWidth() / 2;
-		points[0][1] = r * Math.sin(theta) + frame.getContentPane().getHeight() / 2 - 25;
-		points[1][0] = r * Math.cos(theta + Math.PI) + frame.getWidth() / 2;
-		points[1][1] = r * Math.sin(theta + Math.PI)  + frame.getContentPane().getHeight() / 2 - 25;
-
-		return points;
-	}
 	
 	public static String lineToString(Line2D.Double line) {
 		return "(" + line.getX1() + "," + line.getY1() + ")   (" + line.getX2() + "," + line.getY2() + ")";
