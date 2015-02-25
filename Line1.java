@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 //		private double radius; //round it? Math.round?
 		private double drawAngle;
 //		private double length;
-		private double PI = Math.PI;
 		private double [][] points = new double [2][2];
 		
 		
@@ -24,22 +23,6 @@ import javax.swing.JPanel;
 			String s=("Line drawn at an angle of "+ getDrawAngle());
 			return s;
 		}
-		
-//		public int getNumSides() {
-//			return numSides;
-//		}
-
-//		public void setNumSides(int numSides) {
-//			this.numSides = numSides;
-//		}
-
-//		public double getRadius() {
-//			return radius;
-//		}
-	//
-//		public void setRadius(double radius) {
-//			this.radius = radius;
-//		}
 
 		public double getDrawAngle() {
 			return drawAngle;
@@ -48,14 +31,6 @@ import javax.swing.JPanel;
 		public void setDrawAngle(double drawAngle) {
 			this.drawAngle = drawAngle;
 		}
-
-//		public double getLength() {
-//			return length;
-//		}
-//
-//		public void setLength(double length) {
-//			this.length = length;
-//		}
 
 		public void rotateOnce(int direction){ //clockwise is 0, counter is 1 ????
 			if (direction == 0)
@@ -68,8 +43,6 @@ import javax.swing.JPanel;
 		//public 
 		public double[][] getPoints(double width, double height){ //double or int?? //this only works for line for now lol
 			double[][] points = new double[2][2];
-			double screenAngle = Math.atan(height/width);
-//			this.setLength(height/Math.sin(screenAngle));//this?
 			double startX = width/2;
 			double startY = height/2;
 	 		double drawAngle = getDrawAngle(); 
@@ -124,7 +97,6 @@ import javax.swing.JPanel;
 //				points[1][1] = 0; //y2
 //	 		}
 			
-	 		//this.points = points;
 	 		return points;
 			//receive frame in constructor or receive dimensions of area painted on
 			

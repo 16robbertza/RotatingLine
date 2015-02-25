@@ -32,14 +32,11 @@ public class Display extends JFrame {
 		c.gridy = 0;
 		start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (lineComponent.getStartStop() == 0) {
-					lineComponent.setStartStop(1);
-					lineComponent.setTimer(true);
+				if (!lineComponent.getStartStop()) {
+					lineComponent.setStartStop(true);
 				} else {
-					lineComponent.setStartStop(0);
-					lineComponent.setTimer(false);
-				}
-				;
+					lineComponent.setStartStop(false);
+				};
 			}
 		});
 		buttonPanel.add(start, c);
