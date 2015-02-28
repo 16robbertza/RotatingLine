@@ -1,47 +1,101 @@
-import javax.swing.JPanel;
+	import javax.swing.JPanel;
 	import java.lang.Math;
 	import java.util.ArrayList;
+	
+	
+/*Amy Liu and Andrew Robbertz -  Period 5 - Last update: 2/28/15
+ * 
+ * This is Line class that represents lines that will be drawn at different angles on a screen.
+ * (It's called Line1 because there's another class called Line from the Shapes project)
+ * 
+ * It has private data drawAngle (the angle in radians that the line will be drawn at), and 
+ * the 2D array points (the array of x and y values of the endpoints of the line).
+ * 
+ * It contains a method getPoints to calculate the endpoints of the line, and a method rotateOnce 
+ * that increases the drawAngle by 0.1 radians. 
+ * 
+ * It also contains a constructor, getters and setters for the drawAngle, and a toString. 
+ * 
+ */
 
 	public class Line1 {
 
-
-
-//		private int numSides;
-//		private double radius; //round it? Math.round?
 		private double drawAngle;
-//		private double length;
 		private double [][] points = new double [2][2];
 		
-		
+		/* Method: 
+		 * Constructor for a Line1 object 
+		 * 
+		 * Parameters:
+		 * double drawAngle = the angle (in radians) that the line will be drawn at
+		 * double [][] points = array containing the endpoints of the line 
+		 * format: |x1, y1|
+		 *         |x2, y2|
+		 * 
+		 */
 		public Line1(double drawAngle, double [][] points) {
-//			this.length = length;
 			this.drawAngle = drawAngle; 
 			this.points = points;
 		}
 		
+		
+		/* Method: toString for Line objects
+		 * 
+		 * Returns: a String representation of the Line object
+		 */
 		public String toString(){
 			String s=("Line drawn at an angle of "+ getDrawAngle());
 			return s;
 		}
 
+		
+		/* Method: Getter for drawAngle
+		 * 
+		 * Returns: the drawAngle
+		 */
 		public double getDrawAngle() {
 			return drawAngle;
 		}
 
+		
+		/* Method: Setter for drawAngle
+		 * 
+		 * Parameter: the new drawAngle
+		 */
 		public void setDrawAngle(double drawAngle) {
 			this.drawAngle = drawAngle;
 		}
-
-		public void rotateOnce(int direction){ //clockwise is 0, counter is 1 ????
+		
+		
+		/* Method: Rotates the line by changing the drawAngle by 0.1 radians
+		 * 
+		 * Parameter: 
+		 * int direction = the direction the line will rotate in 
+		 * (0 is clockwise, 1 is counterclockwise)
+		 * 
+		 */
+		public void rotateOnce(int direction){ 
 			if (direction == 0)
-				setDrawAngle(getDrawAngle()+0.1); //increment by one degree --this is also going clockwise
+				setDrawAngle(getDrawAngle()+0.1);
 			if (direction == 1)
-				setDrawAngle(getDrawAngle()-0.1); //should i make a rotate with a while loop or something?
+				setDrawAngle(getDrawAngle()-0.1); 
 		}
 		
-		//method to return a 2D double array of points 
-		//public 
-		public double[][] getPoints(double width, double height){ //double or int?? //this only works for line for now lol
+	
+		/* Method: Calculates the endpoints of the line to be drawn on the screen 
+		 * based on the drawAngle
+		 *  
+		 * Parameters:
+		 * double width = width of the content pane that the line will be painted on
+		 * double height = height of the content pane that the line will be painted on
+		 * 
+		 * Returns:
+		 * 2D array of doubles containing the endpoints of the line in the format
+		 *  
+		 * |x1, y1|
+		 * |x2, y2|
+		 */
+		public double[][] getPoints(double width, double height){ 
 			double[][] points = new double[2][2];
 			double startX = width/2;
 			double startY = height/2;
@@ -60,56 +114,13 @@ import javax.swing.JPanel;
 			points[1][0] = r * Math.cos(drawAngle + Math.PI) + startX;
 			points[1][1] = r * Math.sin(drawAngle + Math.PI)  + startY;
 			
-			
-////			if (drawAngle <= screenAngle){
-//				points[0][0] = startX + 0.5 * length * Math.cos(getDrawAngle());//x1
-//				points[0][1] = startY + 0.5 * length * Math.sin(getDrawAngle());  //y1 //how to deal with negatives later
-//				points[1][0] = startX - 0.5 * length * Math.cos(getDrawAngle());
-//				points[0][1] = startY - 0.5 * length * Math.sin(getDrawAngle());
-//				
-//			}
-//	 		if (drawAngle > 0 && drawAngle <= screenAngle || drawAngle > 2*PI - screenAngle && drawAngle <= 2*PI){
-//	 			points[0][0] = width; //x1
-//				points[0][1] = startY - (0.5 * width * Math.tan(drawAngle));  //y1 
-//				points[1][0] = 0; //x2
-//				points[1][1] = startY + (0.5 * width * Math.tan(drawAngle)); //y2 dont need +180 i think
-//				
-//	 		}
-//	 		
-//	 		if (drawAngle > screenAngle && drawAngle <= PI - screenAngle ){
-//	 			points[0][0] = startX + (0.5 * height) / Math.tan(drawAngle); //x1
-//				points[0][1] = 0;  //y1 
-//				points[1][0] = startX -  (0.5 * height) / Math.tan(drawAngle); //x2
-//				points[1][1] = height; //y2
-//	 		}
-//	 		
-//	 		if (drawAngle > PI - screenAngle && drawAngle <= PI + screenAngle){
-//	 			points[0][0] = 0; //x1
-//				points[0][1] = startY + (0.5 * width * Math.tan(drawAngle));  //y1 
-//				points[1][0] = width; //x2
-//				points[1][1] = startY - (0.5 * width * Math.tan(drawAngle)); //y2
-//	 		}
-//			
-//	 		if (drawAngle > PI + screenAngle && drawAngle <= 2*PI - screenAngle){
-//	 			points[0][0] = startX - (0.5 * height) / Math.tan(drawAngle); //x1
-//				points[0][1] = height;  //y1 
-//				points[1][0] = startX +  (0.5 * height) / Math.tan(drawAngle); //x2
-//				points[1][1] = 0; //y2
-//	 		}
-			
+
 	 		return points;
-			//receive frame in constructor or receive dimensions of area painted on
 			
 		}
 		
-		public void rotate(Line1 line, int direction, double width, double height){
-			
-			line.rotateOnce(direction);
-			line.getPoints(width, height);
-			//errr not sure what to do here
-			//need to rotate continuously somehow and return the array of points each rotation
-		}
-		
+
+		//main method 
 		public static void main(String[] args) {
 //			Line1 a = new Line1(0);
 //			Line1 b = new Line1(2);
